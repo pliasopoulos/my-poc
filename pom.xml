@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>fe_poc</groupId>
+    <artifactId>fe_poc</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+
+        <maven-compiler-plugin-version>3.8.1</maven-compiler-plugin-version>
+        <maven-surefire-plugin-version>2.19.1</maven-surefire-plugin-version>
+        <testng-version>7.0.0-beta1</testng-version>
+
+        <extent-reports-version>4.0.8</extent-reports-version>
+        <slf4j-api-version>1.7.25</slf4j-api-version>
+        <slf4j-log4j-binding>1.7.25</slf4j-log4j-binding>
+        <apache-log4j-xtras>1.2.17</apache-log4j-xtras>
+        <logback-classic-version>1.2.3</logback-classic-version>
+
+        <selenium-api>3.14.0</selenium-api>
+        <selenium-support>3.14.0</selenium-support>
+        <selenium-java>3.141.59</selenium-java>
+        <selenium-server-version>3.141.59</selenium-server-version>
+
+        <lombok-version>1.18.4</lombok-version>
+
+        <apache-commons-version>2.6</apache-commons-version>
+        <apache-poi>4.0.1</apache-poi>
+        <apache-poi-xml>4.0.1</apache-poi-xml>
+        <apache-commons-csv>1.6</apache-commons-csv>
+        <webdriver-manager>3.6.1</webdriver-manager>
+        <suiteXml>RegressionSuite.xml</suiteXml>
+        <env>prod</env>
+        <browserName>chrome</browserName>
+        <os>windows</os>
+        <browserMode>headless</browserMode>
+
+        <project.java.version>11</project.java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    </properties>
+
+    <build>
+
+        <plugins>
+
+            <!-- maven-compiler-plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin-version}</version>
+                <configuration>
+                    <source>${project.java.version}</source>
+                    <target>${project.java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+
+            <!--  maven-surefire-plugin-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin-version}</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>${suiteXml}</suiteXmlFile>
+                    </suiteXmlFiles>
+                    <systemPropertyVariables>
+                        <parameter name="env" value="${env}" />
+                        <parameter name="browserName" value="${browserName}" />
+                        <parameter name="browserMode" value="${browserMode}" />
+                        <parameter name="os" value="${os}" />
+                    </systemPropertyVariables>
+                    <printSummary>true</printSummary>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
+
+    <dependencies>
+
+        <!-- testNG -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng-version}</version>
+        </dependency>
+
+        <!-- extentreports -->
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>${extent-reports-version}</version>
+        </dependency>
+
+        <!-- slf4j-api -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j-api-version}</version>
+        </dependency>
+
+        <!-- slf4j-log4j12 binding -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j-log4j-binding}</version>
+        </dependency>
+
+        <!-- apache-log4j-extras -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>apache-log4j-extras</artifactId>
+            <version>${apache-log4j-xtras}</version>
+        </dependency>
+
+        <!-- selenium-server -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-server</artifactId>
+            <version>${selenium-server-version}</version>
+        </dependency>
+
+        <!-- lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok-version}</version>
+        </dependency>
+
+        <!-- apache commons -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${apache-commons-version}</version>
+        </dependency>
+
+        <!-- apache.poi -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>${apache-poi}</version>
+        </dependency>
+
+        <!-- apache.poi-ooxml -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${apache-poi-xml}</version>
+        </dependency>
+
+        <!-- apache commons-csv -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-csv</artifactId>
+            <version>${apache-commons-csv}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${webdriver-manager}</version>
+        </dependency>
+
+    </dependencies>
+
+</project>
