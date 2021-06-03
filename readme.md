@@ -3,7 +3,7 @@
 ## Command line
 
 ```java
-mvn test -Denv="prod" -DbrowserName="chrome" -DbrowserMode="local" -DsuiteXml="RegressionSuite.xml"
+mvn test -Denv="prod" -DbrowserName="chrome" -DbrowserMode="local" -DsuiteXml="FullRegressionSuite.xml"
 ```
 
 ## IntelliJ
@@ -21,7 +21,6 @@ Edit Configurations > Create a new config for a TestNG test, give it a name and 
 If you choose **local** then all tests will be run using chromedriver with GUI support; so you are able to see what the script it doing in the FE.
 
 * -DsuiteXml (any testng xml file)
---> The default suite (the one to run on the CI server) is situated at root folder ````RegressionSuite.xml```` tag.
 
 # Reporting
 
