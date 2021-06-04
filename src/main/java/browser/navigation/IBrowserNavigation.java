@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 public interface IBrowserNavigation {
-    void gotoPage(String httpAddress);
+    void gotoPage(String httpAddress, String browserMode);
     void navigateToElement(WebElement element);
     void hoverOverAndClickElement(WebElement elementToBeHoveredAndClicked);
     void hoverOverElement(WebElement element);

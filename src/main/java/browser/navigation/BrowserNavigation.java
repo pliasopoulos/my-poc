@@ -22,7 +22,12 @@ public class BrowserNavigation implements IBrowserNavigation {
     }
 
     @Override
-    public void gotoPage(String httpAddress) {
+    public void gotoPage(String httpAddress, String browserMode) {
+        if (browserMode.equals("headless")) {
+            getWebDriver().manage().window().setSize(new Dimension(2555, 1385)); //needed for headless
+        } else {
+            getWebDriver().manage().window().maximize();
+        }
         getWebDriver().get(httpAddress);
     }
 

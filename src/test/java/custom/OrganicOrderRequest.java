@@ -23,7 +23,7 @@ public class OrganicOrderRequest extends TestBase {
 
     @Test
     @Parameters({"env", "browserName", "browserMode"})
-    public void startBrowser(String env, String browserName, String browserMode) {
+    public void startBrowser(String env, String browserName, String browserMode) throws Exception {
         coreComponents = new CoreComponents(returnInitComponentsMap(env, browserName, browserMode, CoreComponents.ORDERS));
         orderRequester = User.createStandardUser();
     }

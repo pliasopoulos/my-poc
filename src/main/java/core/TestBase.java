@@ -19,6 +19,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -63,8 +64,9 @@ public class TestBase {
     private int totalSuiteTestsSkipped;
     private int totalSuiteTestsWarning;
     private long suiteExecutionTime;
-    private String currentEnv;
+    public static String currentEnv;
     private String screenshotPath;
+    public String currentBrowserMode;
 
     private static void setAllEnvironmentalVariables(String env) {
         switch (env) {
@@ -95,7 +97,7 @@ public class TestBase {
 
         currentEnv = env;
         currentBrowser = browserName;
-
+        currentBrowserMode = browserMode;
         launchSeleniumGridLocally(browserMode);
     }
 
@@ -151,7 +153,7 @@ public class TestBase {
 
     @AfterSuite
     @Parameters({"browserName", "browserMode"})
-    public void killSeleniumGridHubIfItExists(String browserName, String browserMode, ITestContext iTestContext) {
+    public void killSeleniumGridHubIfItExists(String browserName, String browserMode, ITestContext iTestContext) throws Exception {
         String suiteName = iTestContext.getCurrentXmlTest().getSuite().getName();
         log.info("Suite name is..: " + suiteName);
         closeSeleniumGridIfItHasAlreadyStarted(browserName, browserMode);
@@ -190,14 +192,14 @@ public class TestBase {
         }
     }
 
-    private void closeSeleniumGridIfItHasAlreadyStarted(String browserName, String browserMode) {
+    private void closeSeleniumGridIfItHasAlreadyStarted(String browserName, String browserMode) throws Exception {
         if (browserName.equals("grid")) {
             BrowserSetup browserSetup = new BrowserSetup();
             WebDriver driver = browserSetup.browserInit(browserName, browserMode);
 
             HashMap<String, Object> browserComponentsMap = returnBrowserComponents(driver);
             BrowserComponents browserComponents = new BrowserComponents(browserComponentsMap);
-            browserComponents.navigation().gotoPage("http://localhost:4444/lifecycle-manager/LifecycleServlet?action=shutdown");
+            browserComponents.navigation().gotoPage("http://localhost:4444/lifecycle-manager/LifecycleServlet?action=shutdown", browserMode);
             driver.close();
             log.info("Successfully closed SeleniumGrid");
         }
@@ -247,7 +249,7 @@ public class TestBase {
         return coreComponents;
     }
 
-    protected  HashMap<String, Object> returnInitComponentsMap (String env, String browserName, String browserMode, List<String> componentsNames) {
+    protected  HashMap<String, Object> returnInitComponentsMap (String env, String browserName, String browserMode, List<String> componentsNames) throws Exception {
         WebDriver driver = spinABrowser(browserName, browserMode);
         HashMap<String, Object> browserComponentMap = returnBrowserComponents(driver);
         BrowserComponents browserComponents = new BrowserComponents(browserComponentMap);
@@ -283,7 +285,7 @@ public class TestBase {
         }
     }
 
-    private WebDriver spinABrowser(String browserName, String browserMode) {
+    private WebDriver spinABrowser(String browserName, String browserMode) throws Exception {
         BrowserSetup browserSetup = new BrowserSetup();
         setDriver(browserSetup.browserInit(browserName, browserMode));
         return getDriver();

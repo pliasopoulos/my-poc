@@ -1,0 +1,27 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="currentTest" parallel="tests" thread-count="3">
+
+    <parameter name="browserName" value="chrome"/>
+    <parameter name="browserMode" value="local"/>
+    <parameter name="env" value="prod"/>
+
+    <test name="LoginTest">
+        <classes>
+            <class name="login.LoginTest"/>
+        </classes>
+    </test>
+
+    <test name="InorganicTest">
+        <classes>
+            <class name="custom.InorganicOrderRequest"/>
+        </classes>
+    </test>
+
+    <test name="OrganicTest">
+        <classes>
+            <class name="custom.OrganicOrderRequest"/>
+        </classes>
+    </test>
+
+</suite>

@@ -40,8 +40,8 @@ public class LoginComponent extends TestBase {
         browserComponents.elements().clickElementClearFieldAndTypeText(PASSWORD_FIELD, new String(Base64.decodeBase64(password)));
     }
 
-    public void logInLGC(String baseHttpAdress, String username, String password) {
-        browserComponents.navigation().gotoPage(baseHttpAdress);
+    public void logInLGC(String baseHttpAdress, String username, String password, String browserMode) {
+        browserComponents.navigation().gotoPage(baseHttpAdress, browserMode);
         clickLoginLink();
         enterUserName(username);
         enterPassword(password);
@@ -76,6 +76,6 @@ public class LoginComponent extends TestBase {
     }
 
     public void visitCustomSolutionsPage(){
-        browserComponents.navigation().gotoPage(CUSTOM_SOLUTIONS_PAGE);
+        browserComponents.navigation().gotoPage(CUSTOM_SOLUTIONS_PAGE, currentBrowserMode);
     }
 }

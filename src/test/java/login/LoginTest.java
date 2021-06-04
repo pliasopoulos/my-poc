@@ -16,14 +16,14 @@ public class LoginTest extends TestBase {
 
     @Test
     @Parameters({"env", "browserName", "browserMode"})
-    public void startBrowser(String env, String browserName, String browserMode){
+    public void startBrowser(String env, String browserName, String browserMode) throws Exception {
         coreComponents = new CoreComponents(returnInitComponentsMap(env, browserName, browserMode, CoreComponents.LOGIN));
         loginTestUser = User.createStandardUser();
     }
 
     @Test(priority = 1, dependsOnMethods = "startBrowser")
     public void gotoHomePageAndAttemptToLogin() {
-        coreComponents.login().logInLGC(LGC_BASE_ADDRESS, User.LOGIN_USERNAME, User.LOGIN_PASSWORD);
+        coreComponents.login().logInLGC(LGC_BASE_ADDRESS, User.LOGIN_USERNAME, User.LOGIN_PASSWORD, currentBrowserMode);
     }
 
     @Test(priority = 2, dependsOnMethods = "gotoHomePageAndAttemptToLogin")
