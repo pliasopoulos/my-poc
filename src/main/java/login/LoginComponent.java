@@ -21,7 +21,7 @@ public class LoginComponent extends TestBase {
     private static final By FULL_NAME_ACCOUNT_DROPDOWN = By.xpath("(//span[contains(@class,'full-name')])[1]");
     private static final By LOGOUT_BUTTON = By.xpath("(//a[contains(@class,'LogOut')])[1]");
     private static final By LOGIN_SUBMIT_BUTTON = By.xpath("//button[@type='submit']");
-    private static final String CUSTOM_SOLUTIONS_PAGE = "https://www.lgcstandards.com/GB/en/orderRequest";
+    public static final String CUSTOM_SOLUTIONS_PAGE = "https://www.lgcstandards.com/GB/en/orderRequest";
     private final BrowserComponents browserComponents;
 
     public LoginComponent(BrowserComponents browserComponents) {
@@ -75,7 +75,7 @@ public class LoginComponent extends TestBase {
         assertBoolean(browserComponents.elements().isElementPresent(LOGIN_LINK, 2), true, "Failed to verify that user has successfully logged out");
     }
 
-    public void visitCustomSolutionsPage(){
+    public void visitCustomSolutionsPage(String page, String currentBrowserMode){
         browserComponents.navigation().gotoPage(CUSTOM_SOLUTIONS_PAGE, currentBrowserMode);
     }
 }

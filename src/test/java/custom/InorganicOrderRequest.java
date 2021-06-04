@@ -4,6 +4,7 @@ import common.page.header.PageHeaderDto;
 import core.CoreComponents;
 import core.TestBase;
 import core.users.User;
+import login.LoginComponent;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -26,7 +27,7 @@ public class InorganicOrderRequest extends TestBase {
 
     @Test(priority = 1, dependsOnMethods = "startBrowser")
     public void gotoCustomSolutions() {
-        coreComponents.login().visitCustomSolutionsPage();
+        coreComponents.login().visitCustomSolutionsPage(LoginComponent.CUSTOM_SOLUTIONS_PAGE, currentBrowserMode);
     }
 
     @Test(priority = 2, dependsOnMethods = "gotoCustomSolutions")
