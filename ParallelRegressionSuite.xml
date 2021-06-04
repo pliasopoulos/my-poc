@@ -11,16 +11,9 @@
             <class name="login.LoginTest"/>
         </classes>
     </test>
-
-    <test name="InorganicTest">
+    <test name="LoginTest">
         <classes>
-            <class name="custom.InorganicOrderRequest"/>
-        </classes>
-    </test>
-
-    <test name="OrganicTest">
-        <classes>
-            <class name="custom.OrganicOrderRequest"/>
+            <class name="login.LoginTest"/>
         </classes>
     </test>
 
