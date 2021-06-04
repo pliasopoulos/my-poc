@@ -11,6 +11,9 @@ public class User {
     private static final String STANDARD_USER_LAST_NAME = "Bloggs";
     private static final String STANDARD_USER_ORGANISATION = "Acme INC";
     private static final String STANDARD_USER_EMAIL = "joe.bloggs@acme.com";
+    public static String LOGIN_FULL_NAME_TWO;
+    public static String LOGIN_USERNAME_TWO;
+    public static String LOGIN_PASSWORD_TWO;
     public static String LOGIN_FULL_NAME;
     public static String LOGIN_USERNAME;
     public static String LOGIN_PASSWORD;
@@ -47,6 +50,9 @@ public class User {
                 LOGIN_USERNAME = "leleliasos@hotmail.com";
                 LOGIN_PASSWORD = "VGVzdEFjYzEyMw==";
                 LOGIN_FULL_NAME = "Qa Test";
+                LOGIN_USERNAME_TWO = "pliasopoulos@gmail.com";
+                LOGIN_PASSWORD_TWO = "VGVzdEFjYzEyMw==";
+                LOGIN_FULL_NAME_TWO = "Pantelis Lias";
                 break;
         }
     }

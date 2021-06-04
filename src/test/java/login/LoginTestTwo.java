@@ -9,7 +9,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 @Slf4j
-public class LoginTest extends TestBase {
+public class LoginTestTwo extends TestBase {
 
     private CoreComponents coreComponents;
     private User loginTestUser;
@@ -24,7 +24,7 @@ public class LoginTest extends TestBase {
 
     @Test(priority = 1, dependsOnMethods = "startBrowser")
     public void gotoHomePageAndAttemptToLogin() {
-        coreComponents.login().logInLGC(LGC_BASE_ADDRESS, User.LOGIN_USERNAME, User.LOGIN_PASSWORD, currentBrowserMode);
+        coreComponents.login().logInLGC(LGC_BASE_ADDRESS, User.LOGIN_USERNAME_TWO, User.LOGIN_PASSWORD_TWO, currentBrowserMode);
     }
 
     @Test(priority = 2, dependsOnMethods = "gotoHomePageAndAttemptToLogin")
@@ -34,7 +34,7 @@ public class LoginTest extends TestBase {
 
     @Test(priority = 3, dependsOnMethods = "verifyReachedLoginPage")
     public void verifyLoginViaFullName() {
-        coreComponents.login().verifyUserSuccessfullyLoggedIn(User.LOGIN_FULL_NAME);
+        coreComponents.login().verifyUserSuccessfullyLoggedIn(User.LOGIN_FULL_NAME_TWO);
     }
 
     @Test(priority = 4, dependsOnMethods = "verifyReachedLoginPage")

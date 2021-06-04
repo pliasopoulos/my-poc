@@ -3,17 +3,18 @@
 <suite name="currentTest" parallel="tests" thread-count="3">
 
     <parameter name="browserName" value="chrome"/>
-    <parameter name="browserMode" value="local"/>
+    <parameter name="browserMode" value="grid"/>
     <parameter name="env" value="prod"/>
 
-    <test name="LoginTest">
+    <test name="LoginTest1">
         <classes>
             <class name="login.LoginTest"/>
         </classes>
     </test>
-    <test name="LoginTest">
+
+    <test name="LoginTest2">
         <classes>
-            <class name="login.LoginTest"/>
+            <class name="login.LoginTestTwo"/>
         </classes>
     </test>
 
